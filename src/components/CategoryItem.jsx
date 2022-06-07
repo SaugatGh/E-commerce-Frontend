@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 
@@ -27,7 +28,7 @@ const Info = styled.div`
   justify-content: center;
 `;
 const Title = styled.h1`
-  color: white;
+  color: black;
   margin-bottom: 20px;
 `;
 const Button = styled.button`
@@ -42,11 +43,13 @@ const Button = styled.button`
 const CategoryItem = ({ item }) => {
   return (
     <Container>
-      <Image src={item.img} />
-      <Info>
-        <Title>{item.title}</Title>
-        <Button>SHOP NOW</Button>
-      </Info>
+      <Link to={`/products/${item.cat}`}>
+        <Image src={item.img} />
+        <Info>
+          <Title>{item.title}</Title>
+          <Button>SHOP NOW</Button>
+        </Info>
+      </Link>
     </Container>
   );
 };
