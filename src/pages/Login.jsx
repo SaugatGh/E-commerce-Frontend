@@ -23,7 +23,10 @@ const Wrapper = styled.div`
   width: 25%;
   padding: 20px;
   background-color: white;
-  ${mobile({ width: "75%" })}
+  
+  @media only screen and (max-width:380px){
+    width:75%;
+  }
 `;
 const Form = styled.form`
   display: flex;

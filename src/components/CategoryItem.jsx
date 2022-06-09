@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { mobile } from "../responsive";
+
 
 const Container = styled.div`
   flex: 1;
@@ -13,7 +13,10 @@ const Image = styled.img`
   height: 100%;
   object-fit: cover;
   // object-cover make images cover like in mobile photos and then make it take fit image crop view.
-  ${mobile({ height: "30vh" })}
+
+  @media only screen and (max-width:380px){
+   height:30vh;
+  }
 `;
 const Info = styled.div`
   position: absolute;

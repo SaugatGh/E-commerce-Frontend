@@ -1,3 +1,4 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Cart from "./pages/Cart";
@@ -6,11 +7,16 @@ import Login from "./pages/Login";
 import Product from "./pages/Product";
 import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
-// import Success from "./pages/success";
+import Success from "./pages/success";
 
 const App = () => {
-  const user =false
-// useSelector(state=>state.user.currentUser);
+  const { currentUser: user } = 
+  useSelector((state) => state.user);
+
+  React.useEffect(() => {
+    if (user) <Navigate replace to="/" />;
+  }, [user]);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -18,7 +24,7 @@ const App = () => {
         <Route path="/products/:category" element={<ProductList />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
-        {/* <Route path="/success" element={<Success />} />  */}
+        <Route path="/success" element={<Success />} />
         <Route
           path="/login"
           element={user ? <Navigate replace to="/" /> : <Login />}

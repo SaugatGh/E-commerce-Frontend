@@ -9,7 +9,10 @@ import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: 70px;
-  ${mobile({ height: "50px" })}
+ 
+  @media only screen and (max-width:380px){
+height:50px;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -19,7 +22,10 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   /*  justify-content for horizotal  display */
-  ${mobile({ padding: "10px 0px" })}
+
+  @media only screen and (max-width: 380px) {
+    padding: 10px 0px;
+  }
 `;
 const Left = styled.div`
   flex: 1;
@@ -29,7 +35,10 @@ const Left = styled.div`
 const Language = styled.span`
   font-size: 14px;
   cursor: pointer;
-  ${mobile({ display: "none" })}
+ 
+  @media only screen and (max-width:380px){
+ display:none;
+  }
 `;
 const SearchContainer = styled.div`
   border: 1px solid lightgray;
@@ -41,31 +50,46 @@ const SearchContainer = styled.div`
 `;
 const Input = styled.input`
   border: none;
-  ${mobile({ width: "50px" })}
+ 
+  @media only screen and (max-width: 380px) {
+    width: 50px;
+  }
 `;
 const Center = styled.div`
   flex: 1;
   text-align: center;
 `;
 const Logo = styled.h1`
+  text-decoration: none;
+  color: black;
   font-weight: bold;
-  ${mobile({ fontSize: "24px" })}
+  
+  @media only screen and (max-width: 380px) {
+    font-size: 24px;
+  }
 `;
 const Right = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  ${mobile({ flex: 2, justifyContent: "center" })}
+  
+  @media only screen and (max-width: 380px) {
+    flex: 2;
+    justify-content: center;
+  }
 `;
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
-  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+  
+  @media only screen and (max-width:380px){
+ font-size:12px;margin-left:10px
+  }
 `;
 const Navbar = () => {
-  const quantity = useSelector(state=>state.cart.quantity)
+  const quantity = useSelector((state) => state.cart.quantity);
   console.log(quantity);
 
   return (
@@ -79,17 +103,37 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>MARCI.</Logo>
+          <Link to="/" style={{ textDecoration: "none", cursor: "pointer" }}>
+            <Logo>MARCI.</Logo>
+          </Link>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
+          <Link
+            to="/register"
+            style={{
+              textDecoration: "none",
+              cursor: "pointer",
+              color: "black",
+            }}
+          >
+            <MenuItem>REGISTER</MenuItem>
+          </Link>
+          <Link
+            to="/login"
+            style={{
+              textDecoration: "none",
+              cursor: "pointer",
+              color: "black",
+            }}
+          >
+            <MenuItem>SIGN IN</MenuItem>
+          </Link>
           <Link to="/cart">
-          <MenuItem>
-            <Badge badgeContent={quantity} color="primary">
-              <ShoppingCartOutlinedIcon />
-            </Badge>
-          </MenuItem>
+            <MenuItem>
+              <Badge badgeContent={quantity} color="primary">
+                <ShoppingCartOutlinedIcon />
+              </Badge>
+            </MenuItem>
           </Link>
         </Right>
       </Wrapper>

@@ -4,6 +4,7 @@ import ArrowRightOutlinedIcon from "@mui/icons-material/ArrowRightOutlined";
 import { useState } from "react";
 import { sliderItems } from "../Data";
 import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -12,7 +13,10 @@ const Container = styled.div`
 
   position: relative;
   overflow: hidden;
-  ${mobile({display:"none"})}
+
+  @media only screen and (max-width:380px){
+display:none;
+  }
 `;
 
 const Arrow = styled.div`
@@ -31,7 +35,7 @@ const Arrow = styled.div`
   //  props is the best component in the styled component
   margin: auto;
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 5;
   // opacity means transparency making it look light than its original form.
   z-index: 2;
 `;
@@ -106,7 +110,9 @@ const Slider = () => {
               <Desc>
              {item.desc}
               </Desc>
-              <Button>SHOP NOW</Button>
+             <Link to="/products">
+              <Button>START SHOPPING NOW</Button>
+              </Link>
             </InfoContainer>
           </Slide>
         ))}

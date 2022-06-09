@@ -11,26 +11,35 @@ import { publicRequest } from "../requestMethod";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
 
-
 const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
-  ${mobile({ padding: "10px", flexDirection: "column" })}
+
+  @media only screen and (max-width: 380px) {
+    paddgin: 10px;
+    flex-direction: column;
+  }
 `;
 const ImgContainer = styled.div`
   flex: 1;
 `;
 const Image = styled.img`
   width: 100%;
-  height: 90vh;
+  height: 50vh;
   object-fit: cover;
-  ${mobile({ height: "40vh " })}
+
+  @media only screen and (max-width: 380px) {
+    height: 40vh;
+  }
 `;
 const InfoContainer = styled.div`
   flex: 1;
   padding: 0px 50px;
-  ${mobile({ padding: "10px " })}
+
+  @media only screen and (max-width: 380px) {
+    padding: 10px;
+  }
 `;
 const Title = styled.div`
   font-weight: 200;
@@ -46,9 +55,11 @@ const FilterContainer = styled.div`
   width: 50%;
   margin: 30px 0px;
   display: flex;
-  ${mobile({ width: "100% " })}
 
   justify-content: space-between;
+  @media only screen and (max-width: 380px) {
+    width: 100%;
+  }
 `;
 const Filter = styled.div`
   display: flex;
@@ -76,7 +87,10 @@ const AddContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  ${mobile({ width: "100% " })}
+
+  @media only screen and (max-width: 380px) {
+    width: 100%;
+  }
 `;
 const AmountContainer = styled.div`
   display: flex;
@@ -112,7 +126,7 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
 
   const getProduct = async () => {
     try {
@@ -127,18 +141,16 @@ const Product = () => {
 
   const handleQuantity = (type) => {
     if (type === "dec") {
-     quantity>1 && setQuantity(quantity - 1);
+      quantity > 1 && setQuantity(quantity - 1);
     } else {
       setQuantity(quantity + 1);
     }
   };
 
-const handleClick=()=>{
-  // update cart
-  dispatch(addProduct({...product,quantity,color,size}));
-  
- 
-};
+  const handleClick = () => {
+    // update cart
+    dispatch(addProduct({ ...product, quantity, color, size }));
+  };
 
   console.log("product", product, id);
   return (
@@ -157,14 +169,19 @@ const handleClick=()=>{
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
-              {product?.color?.map((c, idx) => (
-                <FilterColor color={c} key={c + idx} onClick={()=>setColor(c )}  />
+              {product.color?.map((c, idx) => (
+                <FilterColor
+                  color={c}
+                  key={c + idx}
+                  onClick={() => setColor(c)}
+                />
               ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize onChange={(e)=>setSize(e.target.value)} >
-                {product?.size?.map((s) => (
+              <FilterSize onChange={(e) => setSize(e.target.value)}>
+                {/*  s for size its not sn */}
+                {product.size?.map((s) => (
                   <FilterSizeOption key={s}>{s}</FilterSizeOption>
                 ))}
               </FilterSize>
@@ -176,9 +193,7 @@ const handleClick=()=>{
               <Amount>{quantity}</Amount>
               <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
-            <Button
-            onClick={handleClick }
-            >ADD TO CART</Button>
+            <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

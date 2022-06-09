@@ -8,15 +8,15 @@ export const sliderItems = [
   },
   {
     id: 2,
-    img: "https://media.istockphoto.com/photos/full-length-portrait-of-a-smiling-asian-businesswoman-picture-id1303500951?b=1&k=20&m=1303500951&s=170667a&w=0&h=t0DAUY6Hic4FgQgVarBOdeA3x_QLqjOLlQ50P5_H8Gg=",
+    img: "https://media.istockphoto.com/photos/handsome-man-in-clothes-for-autumnwinter-picture-id498304752?k=20&m=498304752&s=612x612&w=0&h=fN0q7ey97rs2QyUW4XJuWCFTh0JB2vU2MVYohMXL4mw=",
     title: "AUTUM COLLECTION",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
     bg: "fcf1ed",
   },
   {
     id: 3,
-    img: "https://media.istockphoto.com/photos/full-length-portrait-of-a-smiling-asian-businesswoman-picture-id1303500951?b=1&k=20&m=1303500951&s=170667a&w=0&h=t0DAUY6Hic4FgQgVarBOdeA3x_QLqjOLlQ50P5_H8Gg=",
-    title: "LOUNGEWEAR LOVE",
+    img: "https://thumbs.dreamstime.com/b/two-smiling-kids-winter-clothes-together-isolated-white-33515302.jpg",
+    title: "WINTER SALE ",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
     bg: "fbf0f4",
   },

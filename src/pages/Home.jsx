@@ -14,6 +14,11 @@ const Home = () => {
         <Navbar/>
         <Slider/>
         <Categories/>
+        <div style={{textAlign:"center"}}>
+<h2>    Trending Offers</h2>
+
+        </div>
+     
         <Products/>
         <NewsLetter/>
         <Footer/>

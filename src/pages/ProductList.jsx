@@ -21,20 +21,31 @@ const FilterContainer = styled.div`
 
 const Filter = styled.div`
   margin: 20px;
-  ${mobile({ width: "0px 20px", display: "flex", flexDirection: "column" })}
+
+  @media only screen and (max-width: 380px) {
+    width: 0px 20px;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const FilterText = styled.span`
   font-size: 20px;
   font-weight: 600;
   margin-right: 20px;
-  ${mobile({ marginRight: "0px" })}
+
+  @media only screen and (max-width: 380px) {
+    margin-right: 0px;
+  }
 `;
 
 const Select = styled.select`
   padding: 10px;
   margin-right: 20px;
-  ${mobile({ margin: "10px 0px" })}
+
+  @media only screen and (max-width: 380px) {
+    margin: 10px 0px;
+  }
 `;
 const Option = styled.option``;
 
@@ -77,6 +88,18 @@ const ProductList = () => {
             <Option>L</Option>
             <Option>XL</Option>
           </Select>
+          {/*  Changes */}
+          {/* <Select name="size" onChange={handleFilters}>
+            <Option disabled>Men Categories</Option>
+            <Option>Men Categories</Option>
+            <Option>T-shirts</Option>
+            <Option>Sweatshirts</Option>
+            <Option>Sweaters</Option>
+            <Option>Jackets</Option>
+            <Option>Tracksuits</Option>
+            <Option>Shoes</Option>
+          </Select> */}
+          {/*  Changes */}
         </Filter>
         <Filter>
           <FilterText>Sort Products:</FilterText>
