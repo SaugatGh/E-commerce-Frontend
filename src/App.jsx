@@ -1,26 +1,32 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+
 import Product from "./pages/Product";
 import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
 import Success from "./pages/success";
+import { getMyCarts } from "./redux/apiCalls";
 
 const App = () => {
-  const { currentUser: user } = 
-  useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const { currentUser: user } = useSelector((state) => state.user);
 
   React.useEffect(() => {
-    if (user) <Navigate replace to="/" />;
+    if (user) {
+      <Navigate replace to="/" />;
+      getMyCarts(dispatch);
+    }
   }, [user]);
 
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home />} />
+
         <Route path="/products/:category" element={<ProductList />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/cart" element={<Cart />} />

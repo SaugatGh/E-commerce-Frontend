@@ -71,17 +71,17 @@ const Product = ({ item }) => {
 
       <Image src={item.img} />
       <Info>
-        <Icon>
+        {/* <Icon>
           <ShoppingCartOutlined />
-        </Icon>
+        </Icon> */}
         <Icon>
           <Link to={`/product/${item._id}`}>
             <SearchOutlined />
           </Link>
         </Icon>
-        <Icon>
+        {/* <Icon>
           <FavoriteOutlinedIcon />
-        </Icon>
+        </Icon> */}
       </Info>
     </Container>
   );

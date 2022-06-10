@@ -58,7 +58,7 @@ const Button = styled.button`
 
 const Register = () => {
   // --
-  const [name, setName] = useState("");
+  const [firstname, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -69,8 +69,9 @@ const Register = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
+    console.log("username",username)
     register(dispatch, {
-      name,
+      firstname,
       lastName,
       username,
       email,
@@ -87,7 +88,7 @@ const Register = () => {
         <Form>
           <Input
             type="text"
-            placeholder="name"
+            placeholder="first name"
             onChange={(e) => setName(e.target.value)}
           />
           <Input
@@ -98,7 +99,7 @@ const Register = () => {
           <Input
             type="text"
             placeholder="username"
-            onClick={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <Input
             type="email"

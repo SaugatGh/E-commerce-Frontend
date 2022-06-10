@@ -20,6 +20,10 @@ const userSlice = createSlice({
       state.error = true;
     },
 
+    logout:(state)=>{
+      state.currentUser=null
+
+    },
     // --
 
     registerStart: (state) => {
@@ -45,6 +49,7 @@ export const {
   registerStart,
   registerSuccess,
   registerFailure,  // --
+  logout
 } = userSlice.actions;
 export default userSlice.reducer;
 

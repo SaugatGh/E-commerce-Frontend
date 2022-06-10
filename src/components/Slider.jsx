@@ -2,9 +2,11 @@ import styled from "styled-components";
 import ArrowLeftOutlinedIcon from "@mui/icons-material/ArrowLeftOutlined";
 import ArrowRightOutlinedIcon from "@mui/icons-material/ArrowRightOutlined";
 import { useState } from "react";
-import { sliderItems } from "../Data";
-import { mobile } from "../responsive";
+
 import { Link } from "react-router-dom";
+
+import { sliderItems } from "../Data";
+
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -14,8 +16,8 @@ const Container = styled.div`
   position: relative;
   overflow: hidden;
 
-  @media only screen and (max-width:380px){
-display:none;
+  @media only screen and (max-width: 380px) {
+    display: none;
   }
 `;
 
@@ -42,10 +44,13 @@ const Arrow = styled.div`
 const Wrapper = styled.div`
   height: 100%;
   display: flex;
-  transition:all 1.5s ease;
-  transform: translateX(${props=>props.slideIndex  * -100}vw);
-  /*  It transform the image to right  or to left with its transform translate value . Color transform on its own with its translateX vw in the site, */
+  transition: all 1.5s ease;
+  transform: translateX(${(props) => props.slideIndex * -100}vw);
+  /*  It transform the image to right  or to left with its transform translate value . Color transform on its own with its translateX vw 
+  in the site, */
 `;
+
+// ------- slide animation -------- ///
 
 const Slide = styled.div`
   width: 100vw;
@@ -82,13 +87,15 @@ const Button = styled.button`
   background-color: transparent;
   cursor: pointer;
 `;
+ 
+
+
 const Slider = () => {
   const handelClick = (direction) => {
-    if(direction ==="left"){
-      setSlideIndex(slideIndex>0 ?slideIndex-1:2)
-    }
-    else{
-      setSlideIndex(slideIndex<2?slideIndex +1:0)
+    if (direction === "left") {
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+    } else {
+      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
     }
   };
   const [slideIndex, setSlideIndex] = useState(0);
@@ -98,20 +105,19 @@ const Slider = () => {
         {/*  Indicating direction with ("left") */}
         <ArrowLeftOutlinedIcon />
       </Arrow>
+      
       <Wrapper slideIndex={slideIndex}>
         {sliderItems.map((item) => (
-          <Slide bg={item.bg} key={item.id} >
+          <Slide bg={item.bg} key={item.id}>
             {/* This item.bg come from props of bg */}
             <ImgContainer>
               <Image src={item.img} />
             </ImgContainer>
             <InfoContainer>
               <Title>{item.title}</Title>
-              <Desc>
-             {item.desc}
-              </Desc>
-             <Link to="/products">
-              <Button>START SHOPPING NOW</Button>
+              <Desc>{item.desc}</Desc>
+              <Link to="/products">
+                <Button>START SHOPPING NOW</Button>
               </Link>
             </InfoContainer>
           </Slide>

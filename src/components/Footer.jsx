@@ -8,12 +8,12 @@ import {
   Twitter,
 } from "@mui/icons-material";
 import styled from "styled-components";
-import { mobile } from "../responsive";
+
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
-  /* ${mobile({ flexDirection: "column" })} */
+
   @media only screen and (max-width: 380px) {
     flex-direction: column;
   }
@@ -46,7 +46,7 @@ const SocialIcon = styled.div`
 const Center = styled.div`
   flex: 1;
   padding: 20px;
-  /* ${mobile({ display: "none" })} */
+
   @media only screen and (max-width: 380px) {
     display: none;
   }
@@ -69,7 +69,7 @@ const ListItem = styled.li`
 const Right = styled.div`
   flex: 1;
   padding: 20px;
-  /* ${mobile({ backgroundColor: "#fff8f8" })} */
+  
   @media only screen and (max-width: 380px) {
     background-color: #fff8f8;
   }
@@ -130,24 +130,32 @@ const Footer = () => {
               to="/products/Men"
               style={{ textDecoration: "none", color: "green" }}
             >
-              Man Fashion
+              Man 
             </Link>
           </ListItem>
-          <Link
+        
+            <ListItem>
+            <Link
             to="/products/Women"
             style={{ textDecoration: "none", color: "green" }}
           >
-            <ListItem>Women Fashion</ListItem>
+              Women
+
           </Link>
-          <Link
+               </ListItem>
+       
+            <ListItem>
+            <Link
             to="/products/Kids"
             style={{ textDecoration: "none", color: "green" }}
           >
             {" "}
-            <ListItem>Kids Fashion</ListItem>
+              Kids 
+              
           </Link>
-          <ListItem>My Account</ListItem>
-          <ListItem>Order Tracking</ListItem>
+              </ListItem>
+          <ListItem> Account</ListItem>
+          <ListItem>Orders </ListItem>
 
           <ListItem>Wishlist</ListItem>
           <ListItem>Terms</ListItem>

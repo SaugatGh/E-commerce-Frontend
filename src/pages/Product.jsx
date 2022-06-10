@@ -5,11 +5,12 @@ import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import NewsLetter from "../components/NewsLetter";
-import { mobile } from "../responsive";
-import { useLocation } from "react-router-dom";
+
+import { useLocation,useNavigate } from "react-router-dom";
 import { publicRequest } from "../requestMethod";
 import { addProduct } from "../redux/cartRedux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { createCart } from "../redux/apiCalls";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -26,7 +27,7 @@ const ImgContainer = styled.div`
 `;
 const Image = styled.img`
   width: 100%;
-  height: 50vh;
+  height: 90vh;
   object-fit: cover;
 
   @media only screen and (max-width: 380px) {
@@ -42,7 +43,8 @@ const InfoContainer = styled.div`
   }
 `;
 const Title = styled.div`
-  font-weight: 200;
+  font-size: 40px;
+  font-weight: 500;
 `;
 const Desc = styled.div`
   margin: 20px 0px;
@@ -64,6 +66,7 @@ const FilterContainer = styled.div`
 const Filter = styled.div`
   display: flex;
   align-items: center;
+  margin-right: 20px;
 `;
 const FilterTitle = styled.span`
   font-size: 20px;
@@ -81,7 +84,9 @@ const FilterSize = styled.select`
   margin-left: 10px;
   padding: 5px;
 `;
-const FilterSizeOption = styled.option``;
+const FilterSizeOption = styled.option`
+  margin-left: 25px;
+`;
 const AddContainer = styled.div`
   width: 50%;
   display: flex;
@@ -124,10 +129,12 @@ const Product = () => {
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
+  const [maxQuantity, setMaxQuantity] = useState(1);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
   const dispatch = useDispatch();
-
+  const { currentUser } = useSelector((state) => state.user);
+const navigate=useNavigate()
   const getProduct = async () => {
     try {
       const res = await publicRequest.get("/products/find/" + id);
@@ -145,14 +152,26 @@ const Product = () => {
     } else {
       setQuantity(quantity + 1);
     }
+    if (type === "inc") {
+      quantity >= 10 && setQuantity(quantity);
+    }
   };
 
   const handleClick = () => {
     // update cart
-    dispatch(addProduct({ ...product, quantity, color, size }));
+    const data = { ...product, quantity, color, size };
+    if (currentUser) {
+      createCart(dispatch, data, currentUser?._id);
+      dispatch(addProduct({ productId: product, quantity, color, size }));
+
+      // dispatch(createCart({ ...product, quantity, color, size }));
+    } else {
+      navigate("/login")
+      // dispatch(addProduct(data));
+    }
   };
 
-  console.log("product", product, id);
+  // console.log("product", product, id);
   return (
     <Container>
       <Navbar />
@@ -165,7 +184,8 @@ const Product = () => {
           <Title>{product.title}</Title>
 
           <Desc>{product.desc}</Desc>
-          <Price>$ {product.price}</Price>
+          <Desc>ID: {product._id}</Desc>
+          <Price>Rs {product.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
@@ -180,7 +200,6 @@ const Product = () => {
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize onChange={(e) => setSize(e.target.value)}>
-                {/*  s for size its not sn */}
                 {product.size?.map((s) => (
                   <FilterSizeOption key={s}>{s}</FilterSizeOption>
                 ))}
@@ -193,7 +212,8 @@ const Product = () => {
               <Amount>{quantity}</Amount>
               <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
-            <Button onClick={handleClick}>ADD TO CART</Button>
+
+            <Button onClick={handleClick}>ADD TO CART </Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
