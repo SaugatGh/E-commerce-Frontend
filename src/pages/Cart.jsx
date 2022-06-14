@@ -214,7 +214,7 @@ const Cart = () => {
         <Bottom>
           <Info>
             {cart?.products?.map(
-              ({ productId: product, color, quantity, price, size }) => (
+              ({ productId: product, color, quantity, img,price, size }) => (
                 <Product key={product._id}>
                   <ProductDetail>
                     <Image src={product.img} />
@@ -228,10 +228,10 @@ const Cart = () => {
                       <ProductColor color={color} />
                       <ProductAmountContainer>
                         <h4> Quantity :</h4>
-                        {/* <Add onClick={()=>handleQuantity("inc")} /> */}
+                      
 
                         <ProductAmount>{quantity}</ProductAmount>
-                        {/* <Remove onClick={()=>handleQuantity("dec")} />  */}
+                        
                       </ProductAmountContainer>
                       <ProductPrice>Rs {product.price * quantity}</ProductPrice>
                       <ProductSize>
@@ -241,14 +241,13 @@ const Cart = () => {
                     </Details>
 
                     <PriceDetail>
-                      {/* <Button onClick={() => dispatch(removeFromCart())}>
-                        REMOVE
-                      </Button> */}
+               
                     </PriceDetail>
                   </ProductDetail>
                 </Product>
               )
-            )}
+            )
+            }
             <Hr />
           </Info>
           <Summary>
