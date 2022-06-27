@@ -42,7 +42,7 @@ const TopButton = styled.button`
   cursor: pointer;
   border: ${(props) => props.type === "filled" && "none"};
   background-color: ${(props) =>
-    props.type === "filled" ? "black" : "transparent"};
+    props.type === "filled" ? "green" : "transparent"};
   color: ${(props) => props.type === "filled" && "white"};
 `;
 const TopTexts = styled.div`
@@ -162,6 +162,7 @@ const Button = styled.button`
   background-color: black;
   color: white;
   font-weight: 600;
+  cursor: pointer;
 `;
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -206,15 +207,15 @@ const Cart = () => {
             <TopButton>CONTINUE SHOPPING</TopButton>
           </Link>
           <TopTexts>
-            <TopText>Shopping Bag(2)</TopText>
-            <TopText>Your Wishlist (0)</TopText>
+            <TopText>Shopping Bag</TopText>
+            <TopText>Your Wishlist</TopText>
           </TopTexts>
-          <TopButton type="filled">PAYMENT </TopButton>
+          <TopButton type="filled">PAYMENT DOWN HERE </TopButton>
         </Top>
         <Bottom>
           <Info>
             {cart?.products?.map(
-              ({ productId: product, color, quantity, img,price, size }) => (
+              ({ productId: product, color, quantity, img, price, size }) => (
                 <Product key={product._id}>
                   <ProductDetail>
                     <Image src={product.img} />
@@ -228,10 +229,8 @@ const Cart = () => {
                       <ProductColor color={color} />
                       <ProductAmountContainer>
                         <h4> Quantity :</h4>
-                      
 
                         <ProductAmount>{quantity}</ProductAmount>
-                        
                       </ProductAmountContainer>
                       <ProductPrice>Rs {product.price * quantity}</ProductPrice>
                       <ProductSize>
@@ -240,14 +239,11 @@ const Cart = () => {
                       </ProductSize>
                     </Details>
 
-                    <PriceDetail>
-               
-                    </PriceDetail>
+                    <PriceDetail></PriceDetail>
                   </ProductDetail>
                 </Product>
               )
-            )
-            }
+            )}
             <Hr />
           </Info>
           <Summary>

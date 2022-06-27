@@ -37,40 +37,21 @@ export const createCart = async (dispatch, data) => {
   };
   try {
     await userRequest.post("/carts", reqData);
-    // dispatch(addCart(res.data));
-  } catch (err) {
-    // dispatch(createCartFailure())
-  }
+  } catch (err) {}
 };
-
-
 
 // DELETE Cart
 export const clearCart = async (dispatch) => {
-  // dispatch(deleteCartStart())
   try {
     const res = await userRequest.delete("/carts");
     dispatch(removeCart(res.data));
-  } catch (err) {
-    // dispatch(deleteCartFailure())
-  }
+  } catch (err) {}
 };
-
-// export const removeCartItem=async(dispatch)=>{
-//     try{
-// const 
-//     }catch(ex){
-
-//     }
-// }
 
 // GET ALL CART
 export const getMyCarts = async (dispatch) => {
-  //   dispatch(allUserCartStart());
   try {
     const res = await userRequest.get("/carts/find");
     dispatch(allUsercart(res.data));
-  } catch (err) {
-    // dispatch(allUserCartFailure());
-  }
+  } catch (err) {}
 };

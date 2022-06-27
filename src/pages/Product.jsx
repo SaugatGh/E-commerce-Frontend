@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import NewsLetter from "../components/NewsLetter";
 
-import { useLocation,useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { publicRequest } from "../requestMethod";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch, useSelector } from "react-redux";
@@ -134,7 +134,7 @@ const Product = () => {
   const [size, setSize] = useState("");
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
-const navigate=useNavigate()
+  const navigate = useNavigate();
   const getProduct = async () => {
     try {
       const res = await publicRequest.get("/products/find/" + id);
@@ -163,15 +163,11 @@ const navigate=useNavigate()
     if (currentUser) {
       createCart(dispatch, data, currentUser?._id);
       dispatch(addProduct({ productId: product, quantity, color, size }));
-
-      // dispatch(createCart({ ...product, quantity, color, size }));
     } else {
-      navigate("/login")
-      // dispatch(addProduct(data));
+      navigate("/login");
     }
   };
 
-  // console.log("product", product, id);
   return (
     <Container>
       <Navbar />
