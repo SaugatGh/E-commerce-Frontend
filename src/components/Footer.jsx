@@ -87,7 +87,7 @@ const Footer = () => {
   return (
     <Container>
       <Left>
-        <Logo>MARCI.</Logo>
+        <Logo>SKULLCANDY.</Logo>
         <Desc>
           There are many variations of passeges of Lorem Ipsum available, but
           the majority have suffered alteration in some form , by injected

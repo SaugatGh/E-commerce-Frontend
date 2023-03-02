@@ -265,7 +265,7 @@ const Cart = () => {
             </SummaryItem>
 
             <StripeCheckout
-              name="Marci Shop"
+              name="SkullCandy "
               image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1I_hxj4XSlf1u4viUeZ9wJJ-XtlmtJrQbXpkvjVJgnueAB5tQ3Ii0AZLXmxLAYbfqfJQ&usqp=CAU"
               billingAddress
               shippingAddress
@@ -279,7 +279,7 @@ const Cart = () => {
         </Bottom>
         <Button onClick={() => clearCart(dispatch)}>CLEAR ITEMS</Button>
         <hr />
-        {/* <Footer /> */}
+
         <Footer />
       </Wrapper>
     </Container>
