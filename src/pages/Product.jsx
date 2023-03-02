@@ -2,7 +2,9 @@ import { Add, Remove } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
+import Footer from "../components/Footer/Footer";
+
 import Navbar from "../components/Navbar";
 import NewsLetter from "../components/NewsLetter";
 
@@ -11,6 +13,7 @@ import { publicRequest } from "../requestMethod";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch, useSelector } from "react-redux";
 import { createCart } from "../redux/apiCalls";
+import Contact from "../Contact/Contact";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -213,7 +216,8 @@ const Product = () => {
           </AddContainer>
         </InfoContainer>
       </Wrapper>
-      <NewsLetter />
+      {/* <NewsLetter /> */}
+      <Contact/>
       <Footer />
     </Container>
   );

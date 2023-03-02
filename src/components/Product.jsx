@@ -39,7 +39,6 @@ const Circle = styled.div`
   border-radius: 50%;
   background-color: white;
   position: absolute;
-  /*  Absolute makes the position of top-bottom files same goes one position. */
 `;
 const Image = styled.img`
   height: 75%;
@@ -56,12 +55,10 @@ const Icon = styled.div`
   justify-content: center;
   margin: 10px;
   transition: all 0.5s ease;
-  /*  Transition make it littler slower which means ease that is done with 0.5s */
 
   &:hover {
     background-color: #e9f5f5;
     transform: scale(1.1);
-    /*  Transform scale make the image 1 little bit bigger wehen we hover over there with the hover  */
   }
 `;
 const Product = ({ item }) => {
@@ -71,17 +68,11 @@ const Product = ({ item }) => {
 
       <Image src={item.img} />
       <Info>
-        {/* <Icon>
-          <ShoppingCartOutlined />
-        </Icon> */}
         <Icon>
           <Link to={`/product/${item._id}`}>
             <SearchOutlined />
           </Link>
         </Icon>
-        {/* <Icon>
-          <FavoriteOutlinedIcon />
-        </Icon> */}
       </Info>
     </Container>
   );

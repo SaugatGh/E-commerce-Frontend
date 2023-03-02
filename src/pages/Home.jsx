@@ -1,11 +1,12 @@
 import React from "react";
 import Announcement from "../components/Announcement";
 import Categories from "../components/Categories";
-import Footer from "../components/Footer";
+import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar";
 import NewsLetter from "../components/NewsLetter";
 import Products from "../components/Products";
-import Slider from "../components/Slider";
+import Slider from "../components/slider /Slider";
+import Contact from "../Contact/Contact";
 
 const Home = () => {
   return (
@@ -20,7 +21,8 @@ const Home = () => {
       </div>
 
       <Products />
-      <NewsLetter />
+      {/* <NewsLetter /> */}
+      <Contact/>
       <Footer />
     </div>
   );

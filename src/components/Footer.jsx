@@ -69,7 +69,7 @@ const ListItem = styled.li`
 const Right = styled.div`
   flex: 1;
   padding: 20px;
-  
+
   @media only screen and (max-width: 380px) {
     background-color: #fff8f8;
   }
@@ -127,31 +127,31 @@ const Footer = () => {
           <ListItem>
             {" "}
             <Link
-              to="/products/Men"
+              to="/products/Headphone"
               style={{ textDecoration: "none", color: "green" }}
             >
-              Man 
+              Man
             </Link>
           </ListItem>
-        
+
             <ListItem>
             <Link
-            to="/products/Women"
+            to="/products/Earbud"
             style={{ textDecoration: "none", color: "green" }}
           >
               Women
 
           </Link>
                </ListItem>
-       
+
             <ListItem>
             <Link
-            to="/products/Kids"
+            to="/products/Earphone"
             style={{ textDecoration: "none", color: "green" }}
           >
             {" "}
-              Kids 
-              
+              Kids
+
           </Link>
               </ListItem>
           <ListItem> Account</ListItem>

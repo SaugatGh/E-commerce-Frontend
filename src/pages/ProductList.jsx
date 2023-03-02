@@ -88,18 +88,7 @@ const ProductList = () => {
             <Option>L</Option>
             <Option>XL</Option>
           </Select>
-          {/*  Changes */}
-          {/* <Select name="size" onChange={handleFilters}>
-            <Option disabled>Men Categories</Option>
-            <Option>Men Categories</Option>
-            <Option>T-shirts</Option>
-            <Option>Sweatshirts</Option>
-            <Option>Sweaters</Option>
-            <Option>Jackets</Option>
-            <Option>Tracksuits</Option>
-            <Option>Shoes</Option>
-          </Select> */}
-          {/*  Changes */}
+
         </Filter>
         <Filter>
           <FilterText>Sort Products:</FilterText>
@@ -111,8 +100,9 @@ const ProductList = () => {
         </Filter>
       </FilterContainer>
       <Products cat={cat} filters={filters} sort={sort} />
-      <Newsletter />
-      <Footer />
+      {/* <Newsletter /> */}
+      <Footer/>
+      {/* <Footer /> */}
     </Container>
   );
 };

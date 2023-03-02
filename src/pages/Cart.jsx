@@ -2,10 +2,10 @@ import { Add, Remove } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+// import Footer from "../components/Footer";
+import Footer from "../components/Footer/Footer";
 
-import { removeCart } from "../redux/cartRedux";
+import { removeCart, deleteCart } from "../redux/cartRedux";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -13,7 +13,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { userRequest } from "../requestMethod";
 import StripeCheckout from "react-stripe-checkout";
-import { clearCart } from "../redux/apiCalls";
+import { clearCart, deleteCartById } from "../redux/apiCalls";
+import Navbar from "../components/Navbar";
 const KEY =
   "pk_test_51L3WVXHNgpYlMGlKP5VCQ3Z6OsvNCEeYfalXwrFwA2O32qCbqZH0f7bah1x4YRcBwvpnZu7d9ruQ1tXRbDJy9lWW00kPJIqsVa";
 
@@ -187,7 +188,7 @@ const Cart = () => {
         removeCart(dispatch);
         navigate("/success", { stripeData: res.data });
       } catch (err) {
-        console.log("Exception:", err);
+        // console.log("Exception:", err);
       }
     };
 
@@ -237,6 +238,11 @@ const Cart = () => {
                         <b>Size:</b>
                         {size}
                       </ProductSize>
+                      <div style={{ marginTop: "2px" }}>
+                        <button onClick={() => deleteCartById(dispatch)}>
+                          Remove Item
+                        </button>
+                      </div>
                     </Details>
 
                     <PriceDetail></PriceDetail>
@@ -273,6 +279,7 @@ const Cart = () => {
         </Bottom>
         <Button onClick={() => clearCart(dispatch)}>CLEAR ITEMS</Button>
         <hr />
+        {/* <Footer /> */}
         <Footer />
       </Wrapper>
     </Container>

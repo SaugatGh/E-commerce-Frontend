@@ -20,11 +20,9 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   padding: 10px 20px;
-  /* top and bottom 10px  & left and right 20px */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /*  justify-content for horizotal  display */
 
   @media only screen and (max-width: 380px) {
     padding: 10px 0px;
@@ -47,7 +45,6 @@ const SearchContainer = styled.div`
   border: 1px solid lightgray;
   display: flex;
   align-items: center;
-  /*  align-items for vertical display */
   margin-left: 10px;
   padding: 5px;
 `;
@@ -100,20 +97,18 @@ const Logout = styled.div`
 `;
 const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
-  console.log(quantity);
+  // console.log(quantity);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
 
   const handleLogout = () => {
-    // Cookies.remove("userId", { path: "/", domain: "localhost" });
     localStorage.clear();
     dispatch(logout());
     dispatch(removeCart());
     navigate("/");
   };
 
-  // --
   return (
     <Container>
       <Wrapper>
@@ -126,7 +121,7 @@ const Navbar = () => {
         </Left>
         <Center>
           <Link to="/" style={{ textDecoration: "none", cursor: "pointer" }}>
-            <Logo>MARCI.</Logo>
+            <Logo>SkullCandy.</Logo>
           </Link>
         </Center>
         <Right>

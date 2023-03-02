@@ -7,12 +7,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background: white;
-  /* linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("https://wallup.net/wp-content/uploads/2018/09/25/602456-deer-animals-night-waterfall.jpg")
-      center; */
+
   background-size: cover;
   display: flex;
   align-items: center;
@@ -30,7 +25,6 @@ const Wrapper = styled.div`
 const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
-  /*  flex-wrap works with flex:1 like that. */
 `;
 const Title = styled.h1`
   font-size: 24px;
@@ -79,7 +73,6 @@ const Register = () => {
       confirmPassword,
     });
   };
-   //--
 
   return (
     <Container>

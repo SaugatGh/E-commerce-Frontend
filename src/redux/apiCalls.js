@@ -40,12 +40,17 @@ export const createCart = async (dispatch, data) => {
   } catch (err) {}
 };
 
-// DELETE Cart
+// Remove all  Cart
 export const clearCart = async (dispatch) => {
   try {
     const res = await userRequest.delete("/carts");
     dispatch(removeCart(res.data));
   } catch (err) {}
+};
+
+// Remove one item from cart
+export const deleteCartById = (id) => (dispatch) => {
+  dispatch(deleteCart(id));
 };
 
 // GET ALL CART

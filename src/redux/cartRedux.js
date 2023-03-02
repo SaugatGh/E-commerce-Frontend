@@ -1,8 +1,10 @@
+import { Satellite } from "@mui/icons-material";
 import { createSlice } from "@reduxjs/toolkit";
 
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
+    // cart:cartItems,
     products: [],
     quantity: 0,
     total: 0,
@@ -27,8 +29,15 @@ const cartSlice = createSlice({
     },
 
     updateCart: (state, action) => {},
-
-    deleteCart: (state, action) => {},
+    //? Remove sigle cart item
+    deleteCart: (state, action) => {
+      state.products.splice(
+        state.products.findIndex((item) => item._id === action.payload),
+        1
+      );
+      state.quantity -= 1;
+      state.total == action.payload.price * action.payload.quantity;
+    },
 
     userCart: (state, action) => {},
     allUsercart: (state, action) => {
