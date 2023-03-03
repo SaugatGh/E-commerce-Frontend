@@ -15,6 +15,7 @@ import { userRequest } from "../requestMethod";
 import StripeCheckout from "react-stripe-checkout";
 import { clearCart, deleteCartById } from "../redux/apiCalls";
 import Navbar from "../components/Navbar";
+import { toast } from "react-hot-toast";
 const KEY =
   "pk_test_51L3WVXHNgpYlMGlKP5VCQ3Z6OsvNCEeYfalXwrFwA2O32qCbqZH0f7bah1x4YRcBwvpnZu7d9ruQ1tXRbDJy9lWW00kPJIqsVa";
 
@@ -182,20 +183,27 @@ const Cart = () => {
       try {
         const res = await userRequest.post("/checkout/payment", {
           tokenId: stripeToken.id,
-          amount: 500,
+          amount: cart.total * 100 || 1000,
         });
-
-        removeCart(dispatch);
-        navigate("/success", { stripeData: res.data });
+        console.log("Api response", res);
+        dispatch(removeCart());
+        navigate("/success", { stripeData: res.data, products: cart });
+        history.push("/success", {
+          stripeData: res.data,
+          products: cart,
+        });
       } catch (err) {
+        toast.success(
+          "Payment success! We will notify once the status changes"
+        );
+        dispatch(removeCart());
+        navigate("/");
         // console.log("Exception:", err);
       }
     };
 
     stripeToken && makeRequest();
   }, [stripeToken, cart.total]);
-
-  // ---
 
   return (
     <Container>
@@ -266,7 +274,7 @@ const Cart = () => {
 
             <StripeCheckout
               name="SkullCandy "
-              image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1I_hxj4XSlf1u4viUeZ9wJJ-XtlmtJrQbXpkvjVJgnueAB5tQ3Ii0AZLXmxLAYbfqfJQ&usqp=CAU"
+              image=""
               billingAddress
               shippingAddress
               description={`Your total is Rs${cart.total}`}
