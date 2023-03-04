@@ -63,7 +63,7 @@ const Register = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log("username",username)
+    console.log("username", username);
     register(dispatch, {
       firstname,
       lastName,

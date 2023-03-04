@@ -1,27 +1,3 @@
-export const sliderItems = [
-  {
-    id: 1,
-    img: "https://cdn.mos.cms.futurecdn.net/JcmC3cUswP2fU6FyY8UDGP.jpg",
-    title: "SUMMER SALE",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-    bg: "f5fafd",
-  },
-  {
-    id: 2,
-    img: "https://dzp3g6fzlnblr.cloudfront.net/wp-content/uploads/2022/08/music-on-mission-desctop.jpg",
-    title: "AUTUM COLLECTION",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-    bg: "fcf1ed",
-  },
-  {
-    id: 3,
-    img: "https://dzp3g6fzlnblr.cloudfront.net/wp-content/uploads/2022/08/1_desktop_Dime-1.jpg",
-    title: "WINTER SALE ",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-    bg: "fbf0f4",
-  },
-];
-
 export const categories = [
   {
     id: 1,
@@ -41,8 +17,4 @@ export const categories = [
     title: "Earphone ",
     cat: "Earphone",
   },
-];
-
-export const popularProducts = [
-
 ];
